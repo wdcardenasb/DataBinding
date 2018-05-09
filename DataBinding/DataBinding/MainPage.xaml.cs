@@ -7,19 +7,19 @@ using Xamarin.Forms;
 
 namespace DataBinding
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
-            btnEnviar.Clicked += BtnEnviar_Clicked;
-		}
-
-        private void BtnEnviar_Clicked(object sender, EventArgs e)
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
         {
-            var per=(Persona)Resources["personas"];
+            InitializeComponent();
+            botonEnviar.Clicked += BotonEnviar_Clicked;
+        }
+
+        private void BotonEnviar_Clicked(object sender, EventArgs e)
+        {
+            var per = (Persona)Resources["personaUno"];
             per.Nombre = "Messi";
-            per.Nombre = "Argentina";
+            per.Pais = "Argentina";
         }
     }
 }

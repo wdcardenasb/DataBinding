@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-
-namespace DataBinding
+﻿namespace DataBinding
 {
     using System.ComponentModel;
-    class Persona:INotifyPropertyChanged
+    public class Persona : Notificable
     {
         #region Atributos
         private string nombre;
@@ -22,24 +17,41 @@ namespace DataBinding
             }
             set
             {
+                if (nombre == value)
+                {
+                    return;
+                }
                 nombre = value;
-                OnPropertyChanged(Nombre);
+                OnPropertyChanged();
             }
         }
-        public string Pais { get; set; }
+        public string Pais
+        {
+            get
+            {
+                return pais;
+            }
+            set
+            {
+                if (pais == value)
+                {
+                    return;
+                }
+                pais = value;
+                OnPropertyChanged();
+            }
+
+        }
+
         #endregion
 
-        #region Implementación
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        #region Metodos
+        public override string ToString()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            return $"{Nombre} | {Pais}";
         }
         #endregion
-
 
 
     }
-
-
 }
